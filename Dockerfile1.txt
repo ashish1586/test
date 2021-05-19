@@ -2,5 +2,4 @@
 FROM alpine:3.13
 WORKDIR /usr/src/app
 RUN apk add g++ gcc libgcc libstdc++ linux-headers autoconf automake make
-COPY default.conf  ./var
 ENTRYPOINT ["tail", "-f", "/dev/null"]
