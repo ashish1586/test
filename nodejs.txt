@@ -1,0 +1,22 @@
+# Filename: NodeJs
+#FROM alpinebase AS BASE
+#COPY default.conf  ./var
+
+
+FROM ashish158/practice:alpinebase
+ARG NODE_VERSION=14.16.0
+ARG NODE_PACKAGE=node-v$NODE_VERSION-linux-x64
+ARG NODE_HOME=/opt/$NODE_PACKAGE
+ENV NODE_PATH $NODE_HOME/lib/node_modules
+ENV PATH $NODE_HOME/bin:$PATH
+RUN apk update 
+RUN apk add curl sudo
+WORKDIR /usr/src/app
+RUN curl https://nodejs.org/dist/v$NODE_VERSION/$NODE_PACKAGE.tar.gz | tar -xzC /opt/
+RUN apk add yarn
+RUN apk add  nodejs
+RUN echo "NODE Version:" && node --version
+RUN echo "NPM Version:" && npm --version
+
+
+

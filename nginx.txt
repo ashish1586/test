@@ -1,0 +1,5 @@
+FROM ashish158/practice:alpinebase
+WORKDIR /usr/src/app
+RUN apk add nginx
+EXPOSE 80 443
+CMD ["service", "nginx", "start"]
